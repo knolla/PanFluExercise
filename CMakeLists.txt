@@ -215,7 +215,13 @@ if(APPLE OR WIN32)
     elseif(WIN32)
         # directories to look for dependencies
         #AARONBAD -- need to manually specify VTK binaries dir where dll's live. Everything else is ok.
-        set(DEPENDENCY_DIRS ${QT_BINARY_DIR} "C:/Users/amk3264/Downloads/gdalwin32-1.4.1/bin/" "C:/Users/amk3264/Downloads/VTK-6.0.0-win32-install/bin")
+
+	#32-bit
+        set(DEPENDENCY_DIRS ${QT_BINARY_DIR} "C:/Users/amk3264/Downloads/gdalwin32-1.4.1/bin" "C:/Users/amk3264/Downloads/VTK-6.0.0-win32-install/bin")
+		INSTALL(FILES "C:/Users/amk3264/Downloads/msvcr71.dll" "C:/Users/amk3264/Downloads/msvcp71.dll" DESTINATION bin COMPONENT Runtime)
+
+	#64-bit
+	#set(DEPENDENCY_DIRS ${QT_BINARY_DIR} "C:/Users/amk3264/Downloads/release-1600-x64-gdal-1-10-mapserver-6-2/bin" "C:/Users/amk3264/Downloads/VTK6.0.0.rc3-x64-install/bin")
         include(InstallRequiredSystemLibraries)
     endif()
 
